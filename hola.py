@@ -1,4 +1,5 @@
 import requests
+import os
  
 def obtener_datos(api_key):
     url = "https://api.kekw.com/datos"
@@ -12,9 +13,12 @@ def obtener_datos(api_key):
         return {"error": "No se pudieron obtener los datos"}
  
 def main():
-    API_KEY = "AKIALALEMEL33243OLIA"  # Clave API
-    datos = obtener_datos(API_KEY)
-    print(datos)
+    api_key = os.environ.get('API_KEY')
+
+if api_key:
+    print("Clave API obtenida correctamente.")
+else:
+    print("No se encontró la clave API.")
  
 if __name__ == "__main__":
     main()
